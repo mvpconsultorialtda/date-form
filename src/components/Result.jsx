@@ -20,7 +20,7 @@ const Result = ({ scores, onRestart }) => {
             )}
             <p className="result-description">{result.description}</p>
             <button className="fantasy-button" onClick={onRestart}>
-                Start Again
+                Começar de Novo
             </button>
         </div>
     );
