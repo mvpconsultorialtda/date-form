@@ -249,6 +249,24 @@ p {
   animation: softFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
+@keyframes softFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+    filter: blur(2px);
+  }
+}
+
+.soft-fade-out {
+  animation: softFadeOut 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
 .fade-in {
   animation: softFadeIn 1s ease forwards;
 }

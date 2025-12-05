@@ -8,18 +8,26 @@ const Quiz = ({ onRestart }) => {
     const [scores, setScores] = useState({ adventure: 0, casual: 0 });
     const [showResult, setShowResult] = useState(false);
 
-    const handleAnswer = (optionScores) => {
-        const newScores = {
-            adventure: scores.adventure + (optionScores.adventure || 0),
-            casual: scores.casual + (optionScores.casual || 0)
-        };
-        setScores(newScores);
+    const [exiting, setExiting] = useState(false);
 
-        if (currentQuestionIndex < content.questions.length - 1) {
-            setCurrentQuestionIndex(currentQuestionIndex + 1);
-        } else {
-            setShowResult(true);
-        }
+    const handleAnswer = (optionScores) => {
+        setExiting(true);
+
+        // Wait for exit animation (1s)
+        setTimeout(() => {
+            const newScores = {
+                adventure: scores.adventure + (optionScores.adventure || 0),
+                casual: scores.casual + (optionScores.casual || 0)
+            };
+            setScores(newScores);
+
+            if (currentQuestionIndex < content.questions.length - 1) {
+                setCurrentQuestionIndex(currentQuestionIndex + 1);
+            } else {
+                setShowResult(true);
+            }
+            setExiting(false);
+        }, 1000);
     };
 
     if (showResult) {
@@ -37,6 +45,7 @@ const Quiz = ({ onRestart }) => {
             <QuestionCard
                 question={currentQuestion}
                 onAnswer={handleAnswer}
+                exiting={exiting}
             />
         </div>
     );
