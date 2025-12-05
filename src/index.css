@@ -231,39 +231,26 @@ p {
 }
 
 /* Animations */
-/* Animations */
-@keyframes fadeIn {
+@keyframes softFadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: scale(0.98);
+    filter: blur(2px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
+    filter: blur(0);
   }
+}
+
+.soft-fade {
+  animation: softFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .fade-in {
-  animation: fadeIn 0.8s ease forwards;
-}
-
-@keyframes pageTurn {
-  0% {
-    opacity: 0;
-    transform: perspective(1000px) rotateY(-90deg);
-    transform-origin: left center;
-  }
-
-  100% {
-    opacity: 1;
-    transform: perspective(1000px) rotateY(0deg);
-    transform-origin: left center;
-  }
-}
-
-.page-turn {
-  animation: pageTurn 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation: softFadeIn 1s ease forwards;
 }
 
 .fade-in-delayed {
@@ -275,11 +262,39 @@ p {
 
 /* Responsive */
 @media (max-width: 600px) {
+  .app-container {
+    padding: 10px;
+  }
+
+  .intro-container,
+  .question-card,
+  .result-container {
+    padding: 20px;
+    /* Reduce padding on mobile */
+  }
+
   .intro-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .question-text {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+
+  .image-frame {
+    max-height: 250px;
+    /* Smaller image on mobile */
+    margin-bottom: 15px;
+  }
+
+  .option-card {
+    padding: 15px;
+    font-size: 1rem;
+  }
+
+  .fantasy-button {
+    padding: 10px 20px;
+    font-size: 1rem;
   }
 }

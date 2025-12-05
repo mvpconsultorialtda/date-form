@@ -26,7 +26,7 @@ const QuestionCard = ({ question, onAnswer }) => {
     }, [question]);
 
     return (
-        <div className="question-card page-turn">
+        <div className="question-card soft-fade">
             <h2 className="question-text">{question.text}</h2>
             {question.image && (
                 <div className="image-frame">
